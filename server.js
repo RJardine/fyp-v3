@@ -5,6 +5,9 @@ const connectDB = require("./config/db");
 // initialise app variable with express
 const app = express();
 
+// initialise middleware bodyparser
+app.use(express.json({ extended: false }));
+
 // db connect
 connectDB();
 
