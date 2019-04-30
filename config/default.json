@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://doyen:sukumata@socialapp-sqcam.mongodb.net/social?retryWrites=true"
+  "mongoURI": "mongodb+srv://doyen:sukumata@socialapp-sqcam.mongodb.net/social?retryWrites=true",
+  "jwtSecret": "secret"
 }
