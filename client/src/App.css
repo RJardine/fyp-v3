@@ -10,4 +10,5 @@ body {
 
 .navbar {
   border-bottom: solid 1px #1c1c1c;
+  justify-content: space-between;
 }
