@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://doyen:sukumata@socialapp-sqcam.mongodb.net/social?retryWrites=true",
-  "jwtSecret": "secret"
+  "jwtSecret": "secret",
+  "githubClientId": "a16f861eb3f6f034bd0d",
+  "githubSecret": "f5c89a469682e828d8bf7f0f39cfce62a68cb8b2"
 }
