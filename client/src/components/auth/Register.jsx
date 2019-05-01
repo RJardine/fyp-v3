@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TextFieldGroup from "../../common/TextFieldGroup";
+import { connect } from "react-redux";
+import { setAlert } from "../../redux/actions/alert";
+import PropTypes from "prop-types";
 
-const Register = () => {
+const Register = ({ setAlert }) => {
   // hooks for state
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     // password match
     if (password !== password2) {
-      console.log("passowrd not match");
+      setAlert("passwords do not match", "danger");
     } else {
       console.log(formData);
     }
@@ -91,4 +94,12 @@ const Register = () => {
   );
 };
 
-export default Register;
+//proptypes
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { setAlert }
+)(Register);
