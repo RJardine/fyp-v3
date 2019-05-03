@@ -32,10 +32,8 @@ const Register = ({ loginUser, isAuthenticated }) => {
   return (
     <div>
       <div className="container">
-        <br />
-        <br />
         <div className="row">
-          <div className="col-md-5 mx-auto">
+          <div className="mx-auto col-md-5">
             <div
               className=" card text-white bg-dark mb-3"
               style={{

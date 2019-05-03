@@ -10,7 +10,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/profiles" className="nav-link">
-          Developers
+          <i className="fas fa-users" /> Developers
         </Link>
       </li>
       <li className="nav-item">
@@ -26,7 +26,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/profiles" className="nav-link">
-          Developers
+          <i className="fas fa-users" /> Developers
         </Link>
       </li>
       {/* auth */}

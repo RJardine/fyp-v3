@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import DarkModeToggle from "./darkmode/DarkmodeToggle";
 // redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -34,6 +35,7 @@ const App = () => {
         <Fragment>
           <Navbar />
           <div className="container">
+            <DarkModeToggle />
             <Alert />
             <Switch>
               <Route exact path="/" component={Home} />
