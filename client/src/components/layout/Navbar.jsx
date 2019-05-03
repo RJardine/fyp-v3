@@ -1,7 +1,48 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logOut } from "../../redux/actions/authAction";
 
-const Navbar = () => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
+  // if user is authenticated links
+  const authenticatedLinks = (
+    <ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <Link to="/profiles" className="nav-link">
+          Developers
+        </Link>
+      </li>
+      <li className="nav-item">
+        <a href="#!" onClick={logOut} className="nav-link">
+          Log Out <i className="fas fa-sign-out-alt" />
+        </a>
+      </li>
+    </ul>
+  );
+
+  // if user is authenticated links
+  const guestLinks = (
+    <ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <Link to="/profiles" className="nav-link">
+          Developers
+        </Link>
+      </li>
+      {/* auth */}
+      <li className="nav-item">
+        <Link to="/login" className="nav-link">
+          Login
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/register" className="nav-link">
+          Register
+        </Link>
+      </li>
+    </ul>
+  );
+
   return (
     <div>
       <nav
@@ -24,25 +65,12 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarMain">
-            {/* is Logged In link */}
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to="/profiles" className="nav-link">
-                  Developers
-                </Link>
-              </li>
-              {/* auth */}
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Register
-                </Link>
-              </li>
-            </ul>
+            {!loading && (
+              <Fragment>
+                {" "}
+                {isAuthenticated ? authenticatedLinks : guestLinks}{" "}
+              </Fragment>
+            )}
           </div>
         </div>
       </nav>
@@ -50,4 +78,17 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+// proptype
+Navbar.propTypes = {
+  logOut: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logOut }
+)(Navbar);

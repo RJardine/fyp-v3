@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import TextFieldGroup from "../../common/TextFieldGroup";
 import { connect } from "react-redux";
 import { setAlert } from "../../redux/actions/alert";
+import { register } from "../../redux/actions/authAction";
 import PropTypes from "prop-types";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   // hooks for state
   const [formData, setFormData] = useState({
     name: "",
@@ -24,9 +25,15 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert("passwords do not match", "danger");
     } else {
-      console.log(formData);
+      // call register
+      register({ name, email, password });
     }
   };
+
+  // redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   // pull out state var
   const { name, email, password, password2 } = formData;
@@ -38,7 +45,8 @@ const Register = ({ setAlert }) => {
             className=" card text-white bg-dark mb-3"
             style={{
               boxShadow:
-                "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)"
+                "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+              border: "solid 1px #1c1c1c"
             }}
           >
             <h2 className="card-title text-center pb-1 pt-2">
@@ -96,10 +104,17 @@ const Register = ({ setAlert }) => {
 
 //proptypes
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
+// mapstatetoprops
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 export default connect(
-  null,
-  { setAlert }
+  mapStateToProps,
+  { setAlert, register }
 )(Register);
