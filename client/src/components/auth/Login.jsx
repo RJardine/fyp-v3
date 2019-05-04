@@ -42,11 +42,11 @@ const Register = ({ loginUser, isAuthenticated }) => {
                 border: "solid 1px #1c1c1c"
               }}
             >
-              <h1 className="card-title text-center pb-4 pt-3">
-                {" "}
-                welcome back <i className="fas fa-code" />
-              </h1>
               <div className="card-body">
+                <h2 className="text-center ">
+                  {" "}
+                  welcome back <i className="far fa-smile-beam" />
+                </h2>
                 <form onSubmit={e => onSubmit(e)}>
                   {/* email */}
                   <TextFieldGroup

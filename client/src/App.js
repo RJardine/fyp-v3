@@ -17,6 +17,8 @@ import Home from "./components/pages/home/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/Account/Dashboard";
+import CreateProfile from "./components/Account/profile-form/CreateProfile";
+import EditProfile from "./components/Account/profile-form/EditProfile";
 
 // load first time user loads
 if (localStorage.token) {
@@ -42,6 +44,16 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
           </div>
         </Fragment>

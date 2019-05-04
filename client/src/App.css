@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Sunflower:300,500,700");
+/* #dc3545 good red color #28a745 green color */
 
 body {
   background-color: #2e2f34;
@@ -102,4 +103,25 @@ input[type="checkbox"].dmcheck + label {
 
 input[type="checkbox"].dmcheck:checked + label {
   left: 27px;
+}
+
+/* alert */
+.palert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: #2e2f34;
+  color: #333;
+}
+
+/* ALERT SUCCESS */
+.palert-success {
+  background: #28a745;
+  color: #fff;
+}
+
+/* ALERT FAIL */
+.palert-danger {
+  background: #dc3545;
+  color: #fff;
 }

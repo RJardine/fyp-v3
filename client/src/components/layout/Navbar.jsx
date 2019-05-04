@@ -10,12 +10,20 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/profiles" className="nav-link">
-          <i className="fas fa-users" /> Developers
+          <i className="fas fa-users" />
+          <span className="hide-sm">Developers</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/dashboard" className="nav-link">
+          <i className="fas fa-user" />
+          <span className="hide-sm"> Account</span>
         </Link>
       </li>
       <li className="nav-item">
         <a href="#!" onClick={logOut} className="nav-link">
-          Log Out <i className="fas fa-sign-out-alt" />
+          <span className="hide-sm"> Log Out</span>
+          <i className="fas fa-sign-out-alt" />
         </a>
       </li>
     </ul>
@@ -37,7 +45,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
       </li>
       <li className="nav-item">
         <Link to="/register" className="nav-link">
-          Register
+          Register <i className="fas fa-user-plus" />
         </Link>
       </li>
     </ul>
@@ -54,7 +62,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
       >
         <div className="container">
           <Link to="/" className="navbar-brand">
-            <i className="fas fa-code" /> Home
+            <i className="fas fa-home" /> Home
           </Link>
           <button
             type="button"

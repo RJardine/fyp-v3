@@ -14,6 +14,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     password: "",
     password2: ""
   });
+  //   toggle display Social
+  const [disabled, toggle] = useState(true);
+  // Onclick agree button
+  // const onClick = e => {
+  //   setFormData({
+  //     disabled: !disabled
+  //   });
+  // };
+
   // Onchange event
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,11 +58,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               border: "solid 1px #1c1c1c"
             }}
           >
-            <h2 className="card-title text-center pb-1 pt-2">
-              Create an account{" "}
-              <i className="fas fa-user-plus" style={{ margin: "5px" }} />
-            </h2>
             <div className="card-body">
+              <h3 className="text-center ">
+                Create Account <i className="fas fa-user-plus" />
+              </h3>
               <form onSubmit={e => onSubmit(e)}>
                 {/* name */}
                 <TextFieldGroup
@@ -87,9 +95,32 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   onChange={e => onChange(e)}
                   type="password"
                 />
-                <button className="btn btn-primary btn-block" type="submit">
-                  Get Started
+                {/* checkbox */}
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={() =>
+                        // toggle button
+                        toggle(!disabled)
+                      }
+                    />
+                    <label className="form-check-label">
+                      By Signing up you agree for us to store your information
+                    </label>
+                  </div>
+                </div>
+                {/* Submit Button */}
+                <button
+                  className="btn btn-primary btn-block"
+                  type="submit"
+                  disabled={disabled}
+                >
+                  {" "}
+                  Get Started <i className="fas fa-user-plus" />
                 </button>
+
                 <small>
                   Already a member? <Link to="/login">Login</Link>
                 </small>
