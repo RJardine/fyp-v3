@@ -21,6 +21,8 @@ import CreateProfile from "./components/Account/profile-form/CreateProfile";
 import EditProfile from "./components/Account/profile-form/EditProfile";
 import AddExperience from "./components/Account/profile-form/AddExperience";
 import AddEducation from "./components/Account/profile-form/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 
 // load first time user loads
 if (localStorage.token) {
@@ -66,6 +68,8 @@ const App = () => {
                 path="/add-education"
                 component={AddEducation}
               />
+              <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:id" component={Profile} />
             </Switch>
           </div>
         </Fragment>

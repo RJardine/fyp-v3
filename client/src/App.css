@@ -10,6 +10,18 @@ body {
   padding: 0;
 }
 
+.cstmCI {
+  max-width: 420px;
+  color: white;
+}
+
+.cstmCI2 {
+  padding: 15px;
+  margin-right: 2rem;
+  margin-top: 3rem;
+  margin-left: 7rem;
+}
+
 .navbar {
   border-bottom: solid 1px #1c1c1c;
   justify-content: space-between;
