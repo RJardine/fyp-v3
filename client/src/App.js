@@ -19,6 +19,8 @@ import Register from "./components/auth/Register";
 import Dashboard from "./components/Account/Dashboard";
 import CreateProfile from "./components/Account/profile-form/CreateProfile";
 import EditProfile from "./components/Account/profile-form/EditProfile";
+import AddExperience from "./components/Account/profile-form/AddExperience";
+import AddEducation from "./components/Account/profile-form/AddEducation";
 
 // load first time user loads
 if (localStorage.token) {
@@ -53,6 +55,16 @@ const App = () => {
                 exact
                 path="/create-profile"
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/add-experience"
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path="/add-education"
+                component={AddEducation}
               />
             </Switch>
           </div>
