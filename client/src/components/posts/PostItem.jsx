@@ -30,14 +30,14 @@ const PostItem = ({
         >
           <div className="row">
             <div className="col-md-2">
-              <a href="!#">
+              <Link to={`/profile/${user}`}>
                 <img
                   src={avatar}
                   className="d-none d-md-block"
                   alt=""
                   style={{ width: "10rem", height: "10rem" }}
                 />
-              </a>
+              </Link>
               <br />
             </div>
             <div className="col-md-10">

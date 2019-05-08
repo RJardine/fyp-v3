@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../../redux/actions/postActions";
 import Spinner from "../../common/Spinner";
 import PostItem from "./PostItem";
+import PostForm from "./PostForm";
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   // useEffect - fetch the component from api and put it into the state
@@ -23,7 +24,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
               Feed <i className="fas fa-comment-dots" />
             </h3>
             <p>feel free to ask anything, discuss, debate, etc</p>
-            {/* <PostForm /> */}
+            <PostForm />
             <hr />
             {posts.map(post => (
               <PostItem key={post._id} post={post} />

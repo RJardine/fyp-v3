@@ -1,4 +1,10 @@
-import { POST_ERROR, GET_POSTS, UPDATE_LIKES, DELETE_POST } from "../types";
+import {
+  POST_ERROR,
+  GET_POSTS,
+  ADD_POST,
+  UPDATE_LIKES,
+  DELETE_POST
+} from "../types";
 
 // initial state
 const initialState = {
@@ -18,6 +24,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts],
         loading: false
       };
     // WE WANT TO MAKE SURE THE POST WE ARE LIKES ARE ON THE RIGHT POST UPDATING

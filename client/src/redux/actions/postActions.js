@@ -1,6 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST } from "../types";
+import {
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+  DELETE_POST,
+  ADD_POST
+} from "../types";
 
 // GET POST ACTION
 export const getPosts = () => async dispatch => {
@@ -76,6 +82,36 @@ export const deletePost = id => async dispatch => {
     // an alert will pop up
     dispatch(setAlert("Post Removed", "success"));
   } catch (err) {
+    // post error
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// ADD POST ACTION
+export const addPost = formData => async dispatch => {
+  // config for sending data (formData)
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  try {
+    // response
+    const res = await axios.post("/api/posts", formData, config);
+    //when we get the response back
+    dispatch({
+      type: ADD_POST,
+      payload: res.data
+    });
+    // an alert will pop up
+    dispatch(setAlert("Post Created", "success"));
+  } catch (err) {
+    // an alert will pop up
+    dispatch(setAlert("Text is Required", "danger"));
     // post error
     dispatch({
       type: POST_ERROR,
