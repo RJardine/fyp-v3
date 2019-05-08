@@ -1,4 +1,4 @@
-import { POST_ERROR, GET_POSTS, UPDATE_LIKES } from "../types";
+import { POST_ERROR, GET_POSTS, UPDATE_LIKES, DELETE_POST } from "../types";
 
 // initial state
 const initialState = {
@@ -27,6 +27,13 @@ export default function(state = initialState, action) {
         posts: state.posts.map(post =>
           post._id === payload.id ? { ...post, likes: payload.likes } : post
         ),
+        loading: false
+      };
+    // WE WANT TO RETURN THE POSTS AND REMOVE THE DELETED ONE
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== payload),
         loading: false
       };
     case POST_ERROR:

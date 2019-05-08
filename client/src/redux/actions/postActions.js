@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES } from "../types";
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST } from "../types";
 
 // GET POST ACTION
 export const getPosts = () => async dispatch => {
@@ -32,6 +32,8 @@ export const addLike = id => async dispatch => {
       payload: { id, likes: res.data }
     });
   } catch (err) {
+    // an alert will pop up
+    dispatch(setAlert("You have already liked the Post", "danger"));
     // post error
     dispatch({
       type: POST_ERROR,
@@ -50,6 +52,29 @@ export const removeLike = id => async dispatch => {
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
     });
+  } catch (err) {
+    // an alert will pop up
+    dispatch(setAlert("You need to like the post first", "danger"));
+    // post error
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// DELETE POST ACTION
+export const deletePost = id => async dispatch => {
+  try {
+    // response
+    await axios.delete(`/api/posts/${id}`);
+    //when we get the response back
+    dispatch({
+      type: DELETE_POST,
+      payload: id
+    });
+    // an alert will pop up
+    dispatch(setAlert("Post Removed", "success"));
   } catch (err) {
     // post error
     dispatch({

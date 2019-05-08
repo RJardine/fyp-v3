@@ -4,13 +4,18 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 //actions
-import { addLike, removeLike } from "../../redux/actions/postActions";
+import {
+  addLike,
+  removeLike,
+  deletePost
+} from "../../redux/actions/postActions";
 
 const PostItem = ({
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
   addLike,
-  removeLike
+  removeLike,
+  deletePost
 }) => {
   return (
     <div>
@@ -80,7 +85,7 @@ const PostItem = ({
                   {/* SHOW DELETE BUTTON IF AUTHORISED USER IS SIGNED IN */}
                   {!auth.loading && user === auth.user._id && (
                     <button
-                      //   onClick={this.onDeleteClick.bind(this, post._id)}
+                      onClick={e => deletePost(_id)}
                       className="btn btn-danger mr-1"
                     >
                       {" "}
@@ -101,7 +106,8 @@ PostItem.propTypes = {
   auth: PropTypes.object.isRequired,
   post: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
-  removeLike: PropTypes.func.isRequired
+  removeLike: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired
 };
 
 // mapstate
@@ -110,5 +116,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { addLike, removeLike }
+  { addLike, removeLike, deletePost }
 )(PostItem);
