@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
+//actions
+import { addLike, removeLike } from "../../redux/actions/postActions";
 
 const PostItem = ({
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date }
+  post: { _id, text, name, avatar, user, likes, comments, date },
+  addLike,
+  removeLike
 }) => {
   return (
     <div>
@@ -47,11 +51,11 @@ const PostItem = ({
                 </small>
 
                 <hr />
-                {/* {showAction ? ( */}
+
                 <span>
                   {" "}
                   <button
-                    // onClick={this.onLikeClick.bind(this, post._id)}
+                    onClick={e => addLike(_id)}
                     type="button"
                     className="btn-light btn mr-1"
                   >
@@ -62,14 +66,12 @@ const PostItem = ({
                     </i>
                   </button>
                   <button
-                    // onClick={this.onUnLikeClick.bind(this, post._id)}
+                    onClick={e => removeLike(_id)}
                     type="button"
                     className="btn-light btn mr-1"
                   >
                     <i className="fas fa-thumbs-down text-dark">
-                      <span className="badge badge-light">
-                        {/* {post.unlikes.length} */}
-                      </span>
+                      <span className="badge badge-light" />
                     </i>
                   </button>
                   <Link to={`/post/${_id}`} className="btn btn-primary mr-1">
@@ -97,7 +99,9 @@ const PostItem = ({
 
 PostItem.propTypes = {
   auth: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired
 };
 
 // mapstate
@@ -106,5 +110,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  {}
+  { addLike, removeLike }
 )(PostItem);
