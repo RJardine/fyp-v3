@@ -23,6 +23,7 @@ import AddExperience from "./components/Account/profile-form/AddExperience";
 import AddEducation from "./components/Account/profile-form/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import Posts from "./components/posts/Posts";
 
 // load first time user loads
 if (localStorage.token) {
@@ -70,6 +71,7 @@ const App = () => {
               />
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/profile/:id" component={Profile} />
+              <PrivateRoute exact path="/posts" component={Posts} />
             </Switch>
           </div>
         </Fragment>

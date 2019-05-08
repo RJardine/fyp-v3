@@ -10,8 +10,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link to="/profiles" className="nav-link">
-          <i className="fas fa-users" />
-          <span className="hide-sm">Developers</span>
+          <i className="fas fa-users" /> <span className="hide-sm">Users</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/posts" className="nav-link">
+          <i className="fas fa-comments" />{" "}
+          <span className="hide-sm">Feed</span>
         </Link>
       </li>
       <li className="nav-item">
@@ -22,14 +27,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
       </li>
       <li className="nav-item">
         <a href="#!" onClick={logOut} className="nav-link">
-          <span className="hide-sm"> Log Out</span>
-          <i className="fas fa-sign-out-alt" />
+          <i className="fas fa-sign-out-alt" />{" "}
+          <span className="hide-sm"> Log Out </span>
         </a>
       </li>
     </ul>
   );
 
-  // if user is authenticated links
+  // if user is not authenticated links
   const guestLinks = (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
