@@ -17,7 +17,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/profile", require("./routes/api/profile"));
 
-// Serve static assets in production
+// Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // port listen
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
