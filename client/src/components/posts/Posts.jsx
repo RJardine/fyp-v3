@@ -23,7 +23,9 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
               {" "}
               Feed <i className="fas fa-comment-dots" />
             </h3>
-            <p>feel free to ask anything, discuss, debate, etc</p>
+            <p className="text-center">
+              feel free to post anything, discuss, debate, etc
+            </p>
             <PostForm />
             <hr />
             {posts.map(post => (
