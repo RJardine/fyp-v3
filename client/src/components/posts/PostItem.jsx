@@ -15,7 +15,8 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   addLike,
   removeLike,
-  deletePost
+  deletePost,
+  showActions
 }) => {
   return (
     <div>
@@ -56,43 +57,51 @@ const PostItem = ({
                 </small>
 
                 <hr />
-
-                <span>
-                  {" "}
-                  <button
-                    onClick={e => addLike(_id)}
-                    type="button"
-                    className="btn-light btn mr-1"
-                  >
-                    <i className="fas fa-thumbs-up">
-                      <span className="badge badge-light">
-                        {likes.length > 0 && <em>{likes.length}</em>}
-                      </span>
-                    </i>
-                  </button>
-                  <button
-                    onClick={e => removeLike(_id)}
-                    type="button"
-                    className="btn-light btn mr-1"
-                  >
-                    <i className="fas fa-thumbs-down text-dark">
-                      <span className="badge badge-light" />
-                    </i>
-                  </button>
-                  <Link to={`/post/${_id}`} className="btn btn-primary mr-1">
-                    comments {comments.length > 0 && <em>{comments.length}</em>}
-                  </Link>
-                  {/* SHOW DELETE BUTTON IF AUTHORISED USER IS SIGNED IN */}
-                  {!auth.loading && user === auth.user._id && (
-                    <button
-                      onClick={e => deletePost(_id)}
-                      className="btn btn-danger mr-1"
-                    >
+                {/* if SHOW ACTIONS IS TRUE */}
+                {showActions && (
+                  <Fragment>
+                    <span>
                       {" "}
-                      <i className="fas fa-times" />{" "}
-                    </button>
-                  )}
-                </span>
+                      <button
+                        onClick={e => addLike(_id)}
+                        type="button"
+                        className="btn-light btn mr-1"
+                      >
+                        <i className="fas fa-thumbs-up">
+                          <span className="badge badge-light">
+                            {likes.length > 0 && <em>{likes.length}</em>}
+                          </span>
+                        </i>
+                      </button>
+                      <button
+                        onClick={e => removeLike(_id)}
+                        type="button"
+                        className="btn-light btn mr-1"
+                      >
+                        <i className="fas fa-thumbs-down text-dark">
+                          <span className="badge badge-light" />
+                        </i>
+                      </button>
+                      <Link
+                        to={`/post/${_id}`}
+                        className="btn btn-primary mr-1"
+                      >
+                        comments{" "}
+                        {comments.length > 0 && <em>{comments.length}</em>}
+                      </Link>
+                      {/* SHOW DELETE BUTTON IF AUTHORISED USER IS SIGNED IN */}
+                      {!auth.loading && user === auth.user._id && (
+                        <button
+                          onClick={e => deletePost(_id)}
+                          className="btn btn-danger mr-1"
+                        >
+                          {" "}
+                          <i className="fas fa-trash-alt" />{" "}
+                        </button>
+                      )}
+                    </span>
+                  </Fragment>
+                )}
               </blockquote>
             </div>
           </div>
@@ -100,6 +109,10 @@ const PostItem = ({
       </div>
     </div>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true
 };
 
 PostItem.propTypes = {
