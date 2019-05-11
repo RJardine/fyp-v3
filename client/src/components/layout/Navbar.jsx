@@ -66,7 +66,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logOut }) => {
         }}
       >
         <div className="container">
-          <Link to="/home" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <i className="fas fa-home" /> Home
           </Link>
           <button
