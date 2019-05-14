@@ -45,7 +45,7 @@ const Register = ({ loginUser, isAuthenticated }) => {
               <div className="card-body">
                 <h2 className="text-center ">
                   {" "}
-                  welcome back <i className="far fa-smile-beam" />
+                  welcome back <i className="fas fa-sign-in-alt" />
                 </h2>
                 <form onSubmit={e => onSubmit(e)}>
                   {/* email */}

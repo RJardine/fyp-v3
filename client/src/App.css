@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Sunflower:300,500,700");
 /* #dc3545 good red color #28a745 green color */
-
+/* #323946 2e2f34 */
 body {
-  background-color: #2e2f34;
+  background-color: #323946;
   transition: background-color 0.3s ease;
   color: white;
   font-family: "Sunflower", sans-serif;
