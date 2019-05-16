@@ -37,11 +37,23 @@ const Dashboard = ({
                 <DashbActions />
                 <DashExperience experience={profile.experience} />
                 <DashEducation education={profile.education} />
+                <hr
+                  style={{
+                    backgroundColor: "white",
+                    height: "1px",
+                    border: "0"
+                  }}
+                />
                 {/* profile delete button */}
                 <button
                   className=" btn btn-danger btn-lg"
                   data-toggle="modal"
                   data-target="#exampleModal"
+                  style={{
+                    boxShadow:
+                      "0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)",
+                    border: "solid 1px #1c1c1c"
+                  }}
                 >
                   Delete My Account
                 </button>

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 
 const InputGroup = ({
   name,
@@ -21,9 +20,7 @@ const InputGroup = ({
           </span>
         </div>
         <input
-          className={classnames("form-control form-control", {
-            "is-invalid": error
-          })}
+          className="form-control form-control"
           style={{ background: "#2e2f34", color: "white" }}
           name={name}
           type={type}
@@ -31,7 +28,6 @@ const InputGroup = ({
           value={value}
           onChange={onChange}
         />
-        {error && <div className="invalid-feedback text-red">{error} </div>}
       </div>
     </div>
   );

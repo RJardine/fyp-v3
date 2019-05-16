@@ -48,11 +48,11 @@ const EditProfile = ({
       company: loading || !profile.company ? "" : profile.company,
       githubusername:
         loading || !profile.githubusername ? "" : profile.githubusername,
-      twitter: loading || !profile.twitter ? "" : profile.twitter,
-      facebook: loading || !profile.facebook ? "" : profile.facebook,
-      linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
-      youtube: loading || !profile.youtube ? "" : profile.youtube,
-      instagram: loading || !profile.instagram ? "" : profile.instagram
+      twitter: loading || !profile.twitter ? "" : profile.social.twitter,
+      facebook: loading || !profile.facebook ? "" : profile.social.facebook,
+      linkedin: loading || !profile.linkedin ? "" : profile.social.linkedin,
+      youtube: loading || !profile.youtube ? "" : profile.social.youtube,
+      instagram: loading || !profile.instagram ? "" : profile.social.instagram
     });
   }, [loading]);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import isEmpty from "../../common/is-empty";
 
 const ProfileHeader = ({
   profile: {
@@ -42,7 +42,8 @@ const ProfileHeader = ({
                   {" "}
                   <i className="fas fa-building">
                     {" "}
-                    {status} at {company && <span>{company}</span>}
+                    {status && <span>{status}</span>} at{" "}
+                    {company && <span>{company}</span>}
                   </i>
                 </p>
                 <p>
@@ -52,81 +53,87 @@ const ProfileHeader = ({
                   </i>
                 </p>
                 <h3>
-                  {social.facebook && (
-                    <Link
-                      to={social.facebook}
+                  {isEmpty(social && social.facebook) ? null : (
+                    <a
+                      href={social.facebook}
+                      className="text-white p-2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <i
+                        className="fab fa-facebook"
+                        style={{ color: "#3b5998" }}
+                      />
+                    </a>
+                  )}
+                  {/* isempty check */}
+                  {/* isempty twitter */}
+                  {isEmpty(social && social.twitter) ? null : (
+                    <a
+                      href={social.twitter}
                       className="text-white p-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <i
-                        className="fab fa-facebook"
-                        style={{ color: "#3b5998" }}
-                      />
-                    </Link>
-                  )}
-                  {/* isempty check */}
-                  {/* isempty twitter */}
-                  {social.twitter && (
-                    <Link
-                      to={social.twitter}
-                      className="text-white p-2"
-                      target="_blank"
-                    >
-                      <i
                         className="fab fa-twitter"
                         style={{ color: "#1b95e0" }}
                       />
-                    </Link>
+                    </a>
                   )}
                   {/* isempty insta */}
-                  {social.instagram && (
-                    <Link
-                      to={social.instagram}
+                  {isEmpty(social && social.instagram) ? null : (
+                    <a
+                      href={social.instagram}
                       className="text-white p-2"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i
                         className="fab fa-instagram"
                         style={{ color: "#a41196" }}
                       />
-                    </Link>
+                    </a>
                   )}
                   {/* isempty linkedin */}
-                  {social.linkedin && (
-                    <Link
-                      to={social.linkedin}
+                  {isEmpty(social && social.linkedin) ? null : (
+                    <a
+                      href={social.linkedin}
                       className="text-white p-2"
+                      rel="noopener noreferrer"
                       target="_blank"
                     >
                       <i
                         className="fab fa-linkedin"
                         style={{ color: "#005de1" }}
                       />
-                    </Link>
+                    </a>
                   )}
                   {/* isempty website */}
-                  {website && (
-                    <Link
-                      to={website}
+                  {website ? null : (
+                    <a
+                      href={website}
                       className="text-white p-2"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i className="fas fa-link" />
-                    </Link>
+                    </a>
                   )}
                   {/* isempty youtube */}
-                  {social.youtube && (
-                    <Link
-                      to={social.youtube}
+                  {isEmpty(social && social.youtube) ? null : (
+                    <a
+                      href={social.youtube}
                       className="text-white p-2"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i
                         className="fab fa-youtube"
                         style={{ color: "#d32323" }}
                       />
-                    </Link>
+                    </a>
                   )}
                 </h3>
               </div>
